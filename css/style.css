@@ -8,8 +8,10 @@ h1{
   color: aqua;
 }
 
-hr {
-  border-color: rgb(40, 40, 40);
+select {
+  height: 24px;
+  border: 1px solid black;
+  background-color: rgba(255, 255, 255, .6);
 }
 
 .main-container {
@@ -146,6 +148,13 @@ hr {
     color: rgb(100, 100, 100);
     font-weight: 600;
   }
+
+   .detailed-selection {
+    height: 35px;
+    display: flex;
+    align-items: center;
+    padding-left: 25px;
+  }
 }
 
 @media (min-width: 1200.1px) {
@@ -181,5 +190,12 @@ hr {
     background-color: rgb(40, 40, 40);
     color: rgb(100, 100, 100);
     font-weight: 600;
+  }
+
+  .detailed-selection {
+    height: 35px;
+    display: flex;
+    align-items: center;
+    padding-left: 40px;
   }
 }
