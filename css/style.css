@@ -198,4 +198,19 @@ select {
     align-items: center;
     padding-left: 40px;
   }
+
+  .search-link {
+    margin-top: 10px;
+    height: 35px;
+    color: lightpink;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+
+    .search-link:hover {
+    background-color: rgb(63, 60, 60);
+  }
 }
