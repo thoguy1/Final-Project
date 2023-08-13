@@ -12,93 +12,201 @@
   </head>
 </head>
 <body>
-  <div class="container">
-    <header class="header">
-      <div class="left-section">
-        <img class="game-controller-logo" src="/images/game-controller.png" alt="game-controller-logo">
-        
-      </div>
-      <div class="middle-section">
-        <input class="search-bar" type="text" placeholder="Search game name or tag">
-        <button class="search-button">
-          <img class="search-icon" src="images/search.svg" alt="search-button">
-          <div class="tooltip">Search</div>
-        </button>
-      </div>
-      <div class="right-section">
-        <h1>Free Games 2 Play</h1>
-      </div>
-    </header>
-    <nav class="sidebar">
-      <div class="browse-section">Browse by platforms</div>
-      <div class="sidebar-link">Windows/PC</div>
-      <div class="sidebar-link">Browser</div>
-      <div class="sidebar-link">All categories</div>
+  <header class="header">
+    <div class="left-section">
+      <img class="game-controller-logo" src="/images/game-controller.png" alt="game-controller-logo">
       
-      <div class="browse-section">Browse by categories</div>
-      <div class="sidebar-link">Anime</div>
-      <div class="sidebar-link">Battle Royale</div>
-      <div class="sidebar-link">Card Games</div>
-      <div class="sidebar-link">Fantasy</div>
-      <div class="sidebar-link">Fighting</div>
-      <div class="sidebar-link">MMORPG</div>
-      <div class="sidebar-link">MOBA</div>
-      <div class="sidebar-link">Racing</div>
-      <div class="sidebar-link">Sci-Fi</div>
-      <div class="sidebar-link">Shooter</div>
-      <div class="sidebar-link">Social</div>
-      <div class="sidebar-link">Sports</div>
-      <div class="sidebar-link">Strategy</div>
+    </div>
+    <div class="middle-section">
+      <input class="search-bar" type="text" placeholder="Search game name or tag">
+      <button class="search-button">
+        <img class="search-icon" src="images/search.svg" alt="search-button">
+        <div class="tooltip">Search</div>
+      </button>
+    </div>
+    <div class="right-section">
+      <h1>Free Games 2 Play</h1>
+    </div>
+  </header>
+  <nav class="sidebar">
+    <div class="browse-section">Browse by platforms</div>
+    <div class="sidebar-link">Windows/PC</div>
+    <div class="sidebar-link">Browser</div>
+    <div class="sidebar-link">All categories</div>
+    
+    <div class="browse-section">Browse by categories</div>
+    <div class="sidebar-link">Anime</div>
+    <div class="sidebar-link">Battle Royale</div>
+    <div class="sidebar-link">Card Games</div>
+    <div class="sidebar-link">Fantasy</div>
+    <div class="sidebar-link">Fighting</div>
+    <div class="sidebar-link">MMORPG</div>
+    <div class="sidebar-link">MOBA</div>
+    <div class="sidebar-link">Racing</div>
+    <div class="sidebar-link">Sci-Fi</div>
+    <div class="sidebar-link">Shooter</div>
+    <div class="sidebar-link">Social</div>
+    <div class="sidebar-link">Sports</div>
+    <div class="sidebar-link">Strategy</div>
+    
+    <div class="browse-section">Detailed search</div>
+    <div>
+      <div class="detailed-selection"><label for="platform-select">Platform:</label></div>
+      <div class="detailed-selection">
+        <select name="platform" id="platform-select">
+          <option value="">--Choose platform--</option>
+          <option value="pc">Windows (PC)</option>
+          <option value="web">Browser (Web)</option>
+          <option value="all">All platform</option>
+        </select>
+      </div>
+
+      <div class="detailed-selection"><label for="genre-select">Category:</label></div>
+      <div class="detailed-selection">
+        <select name="genre" id="genre-select">
+          <option value="">--Choose grenre--</option>
+          <option value="MMORPG">Shooter</option>
+          <option value="Shooter">Browser (Web)</option>
+          <option value="all">All platform</option>
+        </select>
+      </div>
+
+      <div class="detailed-selection"><label for="sort-by-select">Sort By:</label></div>
+      <div class="detailed-selection">
+        <select name="sort-by" id="sort-by-select">
+          <option value="">Sort By:</option>
+          <option value="relevance">Relevance</option>
+          <option value="popular">Popularity</option>
+          <option value="release">Release Date</option>
+          <option value="alphabetical">Alphabetical</option>
+        </select>
+      </div>
+
+      <div class="search-link">
+        Search
+      </div>
+    </div>  
+  </nav>
+
+  
+  <main>
+    <section class="search-results">
+      <div class="result">
+        <div class="thumbnail-row">
+          <img src="images/thumbnail.jpeg" alt="thumbnail">
+        </div>
+      </div>
+
+      <div class="result">
+        <div class="thumbnail-row">
+          <img src="images/thumbnail.jpeg" alt="thumbnail">
+        </div>
+      </div>
+
+      <div class="result">
+        <div class="thumbnail-row">
+          <img src="images/thumbnail.jpeg" alt="thumbnail">
+        </div>
+      </div>
       
-      <div class="browse-section">Detailed search</div>
-      <div>
-        <div class="detailed-selection"><label for="platform-select">Platform:</label></div>
-        <div class="detailed-selection">
-          <select name="platform" id="platform-select">
-            <option value="">--Choose platform--</option>
-            <option value="pc">Windows (PC)</option>
-            <option value="web">Browser (Web)</option>
-            <option value="all">All platform</option>
-          </select>
+      <div class="result">
+        <div class="thumbnail-row">
+          <img src="images/thumbnail.jpeg" alt="thumbnail">
         </div>
+      </div>
 
-        <div class="detailed-selection"><label for="genre-select">Category:</label></div>
-        <div class="detailed-selection">
-          <select name="genre" id="genre-select">
-            <option value="">--Choose grenre--</option>
-            <option value="MMORPG">Shooter</option>
-            <option value="Shooter">Browser (Web)</option>
-            <option value="all">All platform</option>
-          </select>
+      <div class="result">
+        <div class="thumbnail-row">
+          <img src="images/thumbnail.jpeg" alt="thumbnail">
         </div>
+      </div>
 
-        <div class="detailed-selection"><label for="sort-by-select">Sort By:</label></div>
-        <div class="detailed-selection">
-          <select name="sort-by" id="sort-by-select">
-            <option value="">Sort By:</option>
-            <option value="relevance">Relevance</option>
-            <option value="popular">Popularity</option>
-            <option value="release">Release Date</option>
-            <option value="alphabetical">Alphabetical</option>
-          </select>
+      <div class="result">
+        <div class="thumbnail-row">
+          <img src="images/thumbnail.jpeg" alt="thumbnail">
         </div>
+      </div>
 
-        <div class="search-link">
-          Search
+      <div class="result">
+        <div class="thumbnail-row">
+          <img src="images/thumbnail.jpeg" alt="thumbnail">
         </div>
-      </div>  
-    </nav>
+      </div>
 
-    <main>
-      <section class="game-grid">
-        <div class="game-preview">
-          <div class="thumbnail-row">
-            <img src="images/thumbnail.jpeg" alt="thumbnail">
-          </div>
+      <div class="result">
+        <div class="thumbnail-row">
+          <img src="images/thumbnail.jpeg" alt="thumbnail">
         </div>
-      </section>
-    </main>
-  </div>
+      </div>
+
+      <div class="result">
+        <div class="thumbnail-row">
+          <img src="images/thumbnail.jpeg" alt="thumbnail">
+        </div>
+      </div>
+
+      <div class="result">
+        <div class="thumbnail-row">
+          <img src="images/thumbnail.jpeg" alt="thumbnail">
+        </div>
+      </div>
+
+      <div class="result">
+        <div class="thumbnail-row">
+          <img src="images/thumbnail.jpeg" alt="thumbnail">
+        </div>
+      </div>
+
+      <div class="result">
+        <div class="thumbnail-row">
+          <img src="images/thumbnail.jpeg" alt="thumbnail">
+        </div>
+      </div>
+
+      <div class="result">
+        <div class="thumbnail-row">
+          <img src="images/thumbnail.jpeg" alt="thumbnail">
+        </div>
+      </div>
+
+      <div class="result">
+        <div class="thumbnail-row">
+          <img src="images/thumbnail.jpeg" alt="thumbnail">
+        </div>
+      </div>
+
+      <div class="result">
+        <div class="thumbnail-row">
+          <img src="images/thumbnail.jpeg" alt="thumbnail">
+        </div>
+      </div>
+
+      <div class="result">
+        <div class="thumbnail-row">
+          <img src="images/thumbnail.jpeg" alt="thumbnail">
+        </div>
+      </div>
+
+      <div class="result">
+        <div class="thumbnail-row">
+          <img src="images/thumbnail.jpeg" alt="thumbnail">
+        </div>
+      </div>
+
+      <div class="result">
+        <div class="thumbnail-row">
+          <img src="images/thumbnail.jpeg" alt="thumbnail">
+        </div>
+      </div>
+
+      <div class="result">
+        <div class="thumbnail-row">
+          <img src="images/thumbnail.jpeg" alt="thumbnail">
+        </div>
+      </div>
+      
+    </section>
+  </main>
   
 </body>
 </html>
