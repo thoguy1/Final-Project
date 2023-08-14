@@ -13,6 +13,25 @@ const windowsLink = document.querySelector('#windows');
 const browserLink = document.querySelector('#browser');
 const allLink = document.querySelector('#all');
 
+const animeLink = document.querySelector('#anime');
+const battleRoyaleLink = document.querySelector('#battle-royale');
+const cardLink = document.querySelector('#card');
+const fantasyLink = document.querySelector('#fantasy');
+const fightingLink = document.querySelector('#fighting');
+const mmorpgLink = document.querySelector('#mmorpg');
+const mobaLink = document.querySelector('#moba');
+const racingLink = document.querySelector('#racing');
+const scifiLink = document.querySelector('#sci-fi');
+const shooterLink = document.querySelector('#shooter');
+const socialLink = document.querySelector('#social');
+const sportsLink = document.querySelector('#sports');
+const strategyLink = document.querySelector('#strategy');
+
+const platformSelect = document.querySelector('#platform-select');
+const genreSelect = document.querySelector('#genre-select');
+const sortBySelect = document.querySelector('#sort-by-select');
+const searchLink = document.querySelector('.search-link');
+
 windowsLink.addEventListener('click', function(ev){
   axios.get(`${HEROKU_PROXY_URL}${FTG_SEARCH_URL1}`, {
     params: {
@@ -54,6 +73,205 @@ allLink.addEventListener('click', function(ev){
     console.log( 'Error loading search results', err );
   });
 });
+
+animeLink.addEventListener('click', function(ev){
+  axios.get(`${HEROKU_PROXY_URL}${FTG_SEARCH_URL1}`, {
+    params: {
+      category: 'anime'
+    }
+  })
+  .then(res => {
+    generateSearchResults(res.data);
+  })
+  .catch( err => {
+    console.log( 'Error loading search results', err );
+  });
+});
+
+battleRoyaleLink.addEventListener('click', function(ev){
+  axios.get(`${HEROKU_PROXY_URL}${FTG_SEARCH_URL1}`, {
+    params: {
+      category: 'battle-royale'
+    }
+  })
+  .then(res => {
+    generateSearchResults(res.data);
+  })
+  .catch( err => {
+    console.log( 'Error loading search results', err );
+  });
+});
+
+cardLink.addEventListener('click', function(ev){
+  axios.get(`${HEROKU_PROXY_URL}${FTG_SEARCH_URL1}`, {
+    params: {
+      category: 'card'
+    }
+  })
+  .then(res => {
+    generateSearchResults(res.data);
+  })
+  .catch( err => {
+    console.log( 'Error loading search results', err );
+  });
+});
+
+fantasyLink.addEventListener('click', function(ev){
+  axios.get(`${HEROKU_PROXY_URL}${FTG_SEARCH_URL1}`, {
+    params: {
+      category: 'fantasy'
+    }
+  })
+  .then(res => {
+    generateSearchResults(res.data);
+  })
+  .catch( err => {
+    console.log( 'Error loading search results', err );
+  });
+});
+
+fightingLink.addEventListener('click', function(ev){
+  axios.get(`${HEROKU_PROXY_URL}${FTG_SEARCH_URL1}`, {
+    params: {
+      category: 'fighting'
+    }
+  })
+  .then(res => {
+    generateSearchResults(res.data);
+  })
+  .catch( err => {
+    console.log( 'Error loading search results', err );
+  });
+});
+
+mmorpgLink.addEventListener('click', function(ev){
+  axios.get(`${HEROKU_PROXY_URL}${FTG_SEARCH_URL1}`, {
+    params: {
+      category: 'mmorpg'
+    }
+  })
+  .then(res => {
+    generateSearchResults(res.data);
+  })
+  .catch( err => {
+    console.log( 'Error loading search results', err );
+  });
+});
+
+mobaLink.addEventListener('click', function(ev){
+  axios.get(`${HEROKU_PROXY_URL}${FTG_SEARCH_URL1}`, {
+    params: {
+      category: 'moba'
+    }
+  })
+  .then(res => {
+    generateSearchResults(res.data);
+  })
+  .catch( err => {
+    console.log( 'Error loading search results', err );
+  });
+});
+
+racingLink.addEventListener('click', function(ev){
+  axios.get(`${HEROKU_PROXY_URL}${FTG_SEARCH_URL1}`, {
+    params: {
+      category: 'racing'
+    }
+  })
+  .then(res => {
+    generateSearchResults(res.data);
+  })
+  .catch( err => {
+    console.log( 'Error loading search results', err );
+  });
+});
+
+scifiLink.addEventListener('click', function(ev){
+  axios.get(`${HEROKU_PROXY_URL}${FTG_SEARCH_URL1}`, {
+    params: {
+      category: 'sci-fi'
+    }
+  })
+  .then(res => {
+    generateSearchResults(res.data);
+  })
+  .catch( err => {
+    console.log( 'Error loading search results', err );
+  });
+});
+
+shooterLink.addEventListener('click', function(ev){
+  axios.get(`${HEROKU_PROXY_URL}${FTG_SEARCH_URL1}`, {
+    params: {
+      category: 'shooter'
+    }
+  })
+  .then(res => {
+    generateSearchResults(res.data);
+  })
+  .catch( err => {
+    console.log( 'Error loading search results', err );
+  });
+});
+
+socialLink.addEventListener('click', function(ev){
+  axios.get(`${HEROKU_PROXY_URL}${FTG_SEARCH_URL1}`, {
+    params: {
+      category: 'social'
+    }
+  })
+  .then(res => {
+    generateSearchResults(res.data);
+  })
+  .catch( err => {
+    console.log( 'Error loading search results', err );
+  });
+});
+
+sportsLink.addEventListener('click', function(ev){
+  axios.get(`${HEROKU_PROXY_URL}${FTG_SEARCH_URL1}`, {
+    params: {
+      category: 'sports'
+    }
+  })
+  .then(res => {
+    generateSearchResults(res.data);
+  })
+  .catch( err => {
+    console.log( 'Error loading search results', err );
+  });
+});
+
+strategyLink.addEventListener('click', function(ev){
+  axios.get(`${HEROKU_PROXY_URL}${FTG_SEARCH_URL1}`, {
+    params: {
+      category: 'strategy'
+    }
+  })
+  .then(res => {
+    generateSearchResults(res.data);
+  })
+  .catch( err => {
+    console.log( 'Error loading search results', err );
+  });
+});
+
+searchLink.addEventListener('click', function(ev){
+  axios.get(`${HEROKU_PROXY_URL}${FTG_SEARCH_URL1}`, {
+    params: {
+      platform: platformSelect.value,
+      category: genreSelect.value,
+      'sort-by': sortBySelect.value
+    }
+  })
+  .then(res => {
+    generateSearchResults(res.data);
+  })
+  .catch( err => {
+    console.log( 'Error loading search results', err );
+  });
+});
+
 
 
 searchGameButton.addEventListener('click', function(ev){
@@ -125,12 +343,18 @@ const generateSearchResults = (games) => {
     divTag.appendChild(titleTag);
 
     // Create the element to display game platform
-    const platformTag = document.createElement('p');
+    const platformTag = document.createElement('div');
     platformTag.className = 'platform';
     platformTag.innerHTML = 'Platform: ' + game.platform;
     divTag.appendChild(platformTag);
 
-    // Create the element to display game platform
+    // Create the element to display release date
+    const releaseDateTag = document.createElement('div');
+    releaseDateTag.className = 'release-date';
+    releaseDateTag.innerHTML = 'Release Date: ' + game.release_date;
+    divTag.appendChild(releaseDateTag);
+
+    // Create the element to display short description of the game
     const shortDescTag = document.createElement('div');
     shortDescTag.className = 'short-description';
     shortDescTag.innerHTML = game.short_description;

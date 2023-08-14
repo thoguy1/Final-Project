@@ -9,6 +9,9 @@
     <script src="js/axios.min.js" defer></script>
     <script src="js/main.js" defer></script>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fjalla+One&family=Press+Start+2P&family=Shadows+Into+Light&display=swap" rel="stylesheet">
   </head>
 </head>
 <body>
@@ -39,20 +42,20 @@
     <div class="sidebar-link" id="browser">Browser</div>
     <div class="sidebar-link" id="all">All categories</div>
     
-    <div class="browse-section">Browse by categories</div>
-    <div class="sidebar-link">Anime</div>
-    <div class="sidebar-link">Battle Royale</div>
-    <div class="sidebar-link">Card Games</div>
-    <div class="sidebar-link">Fantasy</div>
-    <div class="sidebar-link">Fighting</div>
-    <div class="sidebar-link">MMORPG</div>
-    <div class="sidebar-link">MOBA</div>
-    <div class="sidebar-link">Racing</div>
-    <div class="sidebar-link">Sci-Fi</div>
-    <div class="sidebar-link">Shooter</div>
-    <div class="sidebar-link">Social</div>
-    <div class="sidebar-link">Sports</div>
-    <div class="sidebar-link">Strategy</div>
+    <div class="browse-section">Browse by genres</div>
+    <div class="sidebar-link" id="anime">Anime</div>
+    <div class="sidebar-link" id="battle-royale">Battle Royale</div>
+    <div class="sidebar-link" id="card">Card Games</div>
+    <div class="sidebar-link" id="fantasy">Fantasy</div>
+    <div class="sidebar-link" id="fighting">Fighting</div>
+    <div class="sidebar-link" id="mmorpg">MMORPG</div>
+    <div class="sidebar-link" id="moba">MOBA</div>
+    <div class="sidebar-link" id="racing">Racing</div>
+    <div class="sidebar-link" id="sci-fi">Sci-Fi</div>
+    <div class="sidebar-link" id="shooter">Shooter</div>
+    <div class="sidebar-link" id="social">Social</div>
+    <div class="sidebar-link" id="sports">Sports</div>
+    <div class="sidebar-link" id="strategy">Strategy</div>
     
     <div class="browse-section">Detailed search</div>
     <div>
@@ -62,17 +65,27 @@
           <option value="">--Choose platform--</option>
           <option value="pc">Windows (PC)</option>
           <option value="web">Browser (Web)</option>
-          <option value="all">All platform</option>
+          <option value="all">All platforms</option>
         </select>
       </div>
 
-      <div class="detailed-selection"><label for="genre-select">Category:</label></div>
+      <div class="detailed-selection"><label for="genre-select">Genre:</label></div>
       <div class="detailed-selection">
         <select name="genre" id="genre-select">
-          <option value="">--Choose grenre--</option>
-          <option value="MMORPG">Shooter</option>
-          <option value="Shooter">Browser (Web)</option>
-          <option value="all">All platform</option>
+          <option value="">--Choose genre--</option>
+          <option value="anime">Anime</option>
+          <option value="battle-royale">Battle Royale</option>
+          <option value="card">Card Games</option>
+          <option value="fantasy">Fantasy</option>
+          <option value="fighting">Fighting</option>
+          <option value="mmorpg">MMORPG</option>
+          <option value="moba">MOBA</option>
+          <option value="racing">Racing</option>
+          <option value="sci-fi">Sci-Fi</option>
+          <option value="shooter">Shooter</option>
+          <option value="social">Social</option>
+          <option value="sports">Sports</option>
+          <option value="strategy">Strategy</option>
         </select>
       </div>
 
