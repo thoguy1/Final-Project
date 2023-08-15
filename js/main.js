@@ -8,6 +8,7 @@ const gameQueryText = document.querySelector('.search-bar');
 const errorMessageNode = document.querySelector('.error-message');
 const searchResultsContainer = document.querySelector('.search-results');
 const resultContainer = document.querySelector('.result');
+const gameDetailsContainer = document.querySelector('.game-details');
 
 const windowsLink = document.querySelector('#windows');
 const browserLink = document.querySelector('#browser');
@@ -322,6 +323,7 @@ const loadSearchResults = (gameTag) => {
   });
 };
 
+// Generate game search results
 const generateSearchResults = (games) => {
   // Clear previous search results
   searchResultsContainer.replaceChildren();
@@ -363,13 +365,102 @@ const generateSearchResults = (games) => {
     searchResultsContainer.appendChild(divTag);
     searchResultsContainer.style.display = 'grid';
           
-    // Add a click event listener to show movie details when clicked
-    // divTag.addEventListener('click', function() {
-    //   errorMessageNode.innerHTML = '';
-    //   searchResultsContainer.style.display = 'none';
-    //   showMovieDetails(movie.id);
-    // });
-    
+    //Add a click event listener to show game details when clicked
+    divTag.addEventListener('click', function() {
+      searchResultsContainer.style.display = 'none';
+      searchGameDetails(game.id);
+    });
+  });
+}; // generateSearchResults()
+
+const searchGameDetails = (gameId) => {
+
+  axios.get(`${HEROKU_PROXY_URL}https://www.freetogame.com/api/game`, {
+    params: {
+      id: gameId
+    }
+  })
+  .then(res => {
+    generateGameDetails(res.data);
+  })
+  .catch( err => {
+    console.log( 'Error loading game details', err );
+  });
+}; // searchGameDetails()
+
+const generateGameDetails = (game) => {
+  gameDetailsContainer.replaceChildren();
+
+  const gameTitle = document.createElement('h2');
+  gameTitle.innerHTML = game.title;
+
+  gameDetailsContainer.appendChild(gameTitle);
+
+  const screenshotsContainer = document.createElement('div');
+  screenshotsContainer.className = 'screenshots';
+  screenshotsContainer.style.display = 'grid';
+  // Create screenshots of the game
+  game.screenshots.forEach(screenshot => {
+    const divTag = document.createElement('div');
+    divTag.className = 'screenshot'
+    const imgTag = document.createElement('img');
+    imgTag.src = screenshot.image;
+    imgTag.alt = game.title;
+    divTag.appendChild(imgTag);
+
+    screenshotsContainer.appendChild(divTag); 
   });
 
-};
+  gameDetailsContainer.appendChild(screenshotsContainer);
+
+  const specsDiv = document.createElement('div');
+  specsDiv.className = 'specs-table';
+  specsDiv.innerHTML = generateSpecsTable(game);
+  gameDetailsContainer.appendChild(specsDiv);
+}; // generateGameDetails
+
+const generateSpecsTable = (game) => {
+  const tableSpecs = `
+    <table>
+      <tr>
+        <th>Genre</th>
+        <th>Platform</th>
+        <th>Publisher</th>
+        <th>Developer</th>
+        <th>Release Date</th>
+      </tr>
+      <tr>
+        <td>${game.genre}</td>
+        <td>${game.platform}</td>
+        <td>${game.publisher}</td>
+        <td>${game.developer}</td>
+        <td>${game.release_date}</td>
+      </tr>
+      <tr style="text-align: center;">
+        <th colspan="5">Minimum System Requirements</th>
+      </tr>
+      <tr>
+        <th>Operating System:</th>
+        <td colspan="4">${game.minimum_system_requirements.os}</td>
+      </tr>
+      <tr>
+        <th>Processor:</th>
+        <td colspan="4">${game.minimum_system_requirements.processor}</td>
+      </tr>
+      <tr>
+        <th>Memory:</th>
+        <td colspan="4">${game.minimum_system_requirements.memory}</td>
+      </tr>
+      <tr>
+        <th>Graphics card:</th>
+        <td colspan="4">${game.minimum_system_requirements.graphhics}</td>
+      </tr>
+      <tr>
+        <th>Storage:</th>
+        <td colspan="4">${game.minimum_system_requirements.storage}</td>
+      </tr>
+    </table>
+  `;
+
+  return tableSpecs;
+}
