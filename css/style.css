@@ -108,7 +108,7 @@ table, th, td {
   font-size: 16px;
   border: 1px solid rgb(192, 192, 192);
   border-radius: 2px;
-  box-shadow: inset 1px 2px 3px rgba(0, 0, 0, 0.05);
+  box-shadow: inset 1px 2px 3px rgba(255, 255, 255, 0.05);
 }
 
 .search-bar::placeholder {
@@ -150,6 +150,15 @@ table, th, td {
 
 .search-button:hover .tooltip {
   opacity: 1;
+}
+
+.favourites-button {
+  height: 40px;
+  font-size: 18px;
+  color: rgb(106, 105, 105);
+  border: 1px solid rgb(192, 192, 192);
+  border-radius: 2px;
+  cursor: pointer;
 }
 
 @media (max-width: 750px) {
@@ -423,7 +432,7 @@ table, th, td {
 .favourite-button:hover,
 .back-button:hover {
   transform: scale(1.05);
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 5px 15px rgba(255, 255, 255, 0.3);
 }
 
 .play-button:hover::before,
@@ -436,8 +445,16 @@ table, th, td {
 .favourite-button:active,
 .back-button:active {
   transform: scale(0.95);
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 2px 5px rgba(255, 255, 255, 0.3);
   background-color: #2980b9;
+}
+
+.favourite-button:active {
+  background-color: rgb(185, 3, 3);
+}
+
+.back-button:active {
+  background-color: rgb(1, 79, 1);
 }
 
 .play-button:active::before,

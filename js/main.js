@@ -6,6 +6,8 @@ const HEROKU_PROXY_URL = 'https://cors-anywhere.herokuapp.com/';
 const searchGameButton = document.querySelector('.search-button');
 const gameQueryText = document.querySelector('.search-bar');
 const errorMessageNode = document.querySelector('.error-message');
+const showFavouritesButton = document.querySelector('.favourites-button');
+
 const searchResultsContainer = document.querySelector('.search-results');
 const resultContainer = document.querySelector('.result');
 const gameDetailsContainer = document.querySelector('.game-details');
@@ -33,7 +35,77 @@ const genreSelect = document.querySelector('#genre-select');
 const sortBySelect = document.querySelector('#sort-by-select');
 const searchLink = document.querySelector('.search-link');
 
-let favouriteGamesID = [];
+let favouriteGamesIDs = [];
+
+showFavouritesButton.addEventListener('click', () => {
+  if(favouriteGamesIDs.length > 0) {
+    // Clear previous search results
+    searchResultsContainer.replaceChildren();
+    // Make sure gameDetailsContainer and castDetailsContainer are hidden
+    gameDetailsContainer.style.display = 'none';
+    favouriteGamesIDs.forEach(gameId => {
+      axios.get(`${HEROKU_PROXY_URL}https://www.freetogame.com/api/game`, {
+        params: {
+          id: gameId
+        }
+      })
+      .then(res => {
+        generateFavouriteGame(res.data);
+      })
+      .catch( err => {
+        console.log( 'Error loading game details', err );
+      });
+      
+    });
+    searchResultsContainer.style.display = 'grid';
+  } else {
+    errorMessageNode.innerHTML = 'There is no favourite game saved';
+  }
+});
+
+// Function to generate and display favorite game results
+const generateFavouriteGame = (game) => {
+  const divTag = document.createElement('div');
+  divTag.className = 'result';
+  // Create the image element for game thumbnail
+  const imgTag = document.createElement('img');
+  imgTag.className = "game-thumbnail";
+  imgTag.src = `https://www.freetogame.com/g/${game.id}/thumbnail.jpg`;
+  imgTag.alt = game.title;
+  divTag.appendChild(imgTag);
+
+  // Create the element to display game title
+  const titleTag = document.createElement('h3');
+  titleTag.innerHTML = game.title;
+  divTag.appendChild(titleTag);
+
+  // Create the element to display game platform
+  const platformTag = document.createElement('div');
+  platformTag.className = 'platform';
+  platformTag.innerHTML = 'Platform: ' + game.platform;
+  divTag.appendChild(platformTag);
+
+  // Create the element to display release date
+  const releaseDateTag = document.createElement('div');
+  releaseDateTag.className = 'release-date';
+  releaseDateTag.innerHTML = 'Release Date: ' + game.release_date;
+  divTag.appendChild(releaseDateTag);
+
+  // Create the element to display short description of the game
+  const shortDescTag = document.createElement('div');
+  shortDescTag.className = 'short-description';
+  shortDescTag.innerHTML = game.short_description;
+  divTag.appendChild(shortDescTag);
+
+  searchResultsContainer.appendChild(divTag);
+  searchResultsContainer.style.display = 'grid';
+        
+  //Add a click event listener to show game details when clicked
+  divTag.addEventListener('click', function() {
+    searchResultsContainer.style.display = 'none';
+    searchGameDetails(game.id);
+  });
+};
 
 windowsLink.addEventListener('click', function(ev){
   axios.get(`${HEROKU_PROXY_URL}${FTG_SEARCH_URL1}`, {
@@ -310,7 +382,7 @@ gameQueryText.addEventListener('input', function(ev){
 
 // Load the search results from the input text entered by user
 const loadSearchResults = (gameTag) => {
-  // Make an AJAX request to get a list movies from the user input text
+  // Make an AJAX request to get a list games from the user input text
   axios.get(`${HEROKU_PROXY_URL}${FTG_SEARCH_URL2}`, {
     params: {
       tag: gameTag
@@ -369,6 +441,7 @@ const generateSearchResults = (games) => {
     //Add a click event listener to show game details when clicked
     divTag.addEventListener('click', function() {
       searchResultsContainer.style.display = 'none';
+      console.log(game.id);
       searchGameDetails(game.id);
     });
   });
@@ -430,7 +503,7 @@ const generateGameDetails = (game) => {
   gameDetailsContainer.appendChild(descDiv);
 
   generateButtons(game.id);
-
+  gameDetailsContainer.style.display = 'block';
 }; // generateGameDetails
 
 const generateSpecsTable = (game) => {
@@ -462,10 +535,6 @@ const generateSpecsTable = (game) => {
         <th colspan="5">Minimum System Requirements</th>
       </tr>
       <tr>
-        <th>Operating System:</th>
-        <td colspan="4">${os}</td>
-      </tr>
-      <tr>
         <th>Processor:</th>
         <td colspan="4">${processor}</td>
       </tr>
@@ -488,10 +557,9 @@ const generateSpecsTable = (game) => {
 }
 
 const generateButtons = (id) => {
-  const isFavourite = favouriteGamesID.includes(id);
-
   const buttonsContainer = document.createElement('div');
   buttonsContainer.className = 'buttons-container';
+  const isFavourite = favouriteGamesIDs.includes(id);
   
   const playButton = document.createElement('button');
   playButton.className = 'play-button';
@@ -509,4 +577,35 @@ const generateButtons = (id) => {
   buttonsContainer.appendChild(backButton);
 
   gameDetailsContainer.appendChild(buttonsContainer);
+
+  handleBackButton(backButton);
+  
+  handleFavouriteButton(favouriteButton, id, isFavourite);
+};
+
+const handleBackButton = (backButton) => {
+  backButton.addEventListener('click', () => {
+    gameDetailsContainer.style.display = 'none';
+    searchResultsContainer.style.display = 'grid';
+  });
+}
+
+const handleFavouriteButton = (favouriteButton, id, isFavourite) => {
+  
+  favouriteButton.addEventListener('click', () => {
+    if (isFavourite) {
+      // Remove the game from the favorites list
+      const index = favouriteGamesIDs.indexOf(id);
+      if (index !== -1) {
+        favouriteGamesIDs.splice(index, 1);
+        //savegamesToLocalStorage();
+      }
+    } else {
+      // Add the game to the favorites list
+      favouriteGamesIDs.push(id);
+      //savegamesToLocalStorage();
+    }
+    // Toggle the button text
+    favouriteButton.innerHTML = isFavourite ? 'Add to Favourite' : 'Remove from Favourite';
+  });
 };
