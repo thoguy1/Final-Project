@@ -33,6 +33,8 @@ const genreSelect = document.querySelector('#genre-select');
 const sortBySelect = document.querySelector('#sort-by-select');
 const searchLink = document.querySelector('.search-link');
 
+let favouriteGamesID = [];
+
 windowsLink.addEventListener('click', function(ev){
   axios.get(`${HEROKU_PROXY_URL}${FTG_SEARCH_URL1}`, {
     params: {
@@ -427,13 +429,7 @@ const generateGameDetails = (game) => {
   descDiv.innerHTML = game.description;
   gameDetailsContainer.appendChild(descDiv);
 
-  const playButtonContainer = document.createElement('div');
-  playButtonContainer.className = 'play-container';
-  const playButton = document.createElement('button');
-  playButton.className = 'play-button';
-  playButton.innerHTML = 'Play now';
-  playButtonContainer.appendChild(playButton);
-  gameDetailsContainer.appendChild(playButtonContainer);
+  generateButtons(game.id);
 
 }; // generateGameDetails
 
@@ -490,3 +486,27 @@ const generateSpecsTable = (game) => {
 
   return tableSpecs;
 }
+
+const generateButtons = (id) => {
+  const isFavourite = favouriteGamesID.includes(id);
+
+  const buttonsContainer = document.createElement('div');
+  buttonsContainer.className = 'buttons-container';
+  
+  const playButton = document.createElement('button');
+  playButton.className = 'play-button';
+  playButton.innerHTML = 'Play now';
+  buttonsContainer.appendChild(playButton);
+
+  const favouriteButton = document.createElement('button');
+  favouriteButton.className = 'favourite-button';
+  favouriteButton.innerHTML = isFavourite ? 'Remove from Favourite' : 'Add to Favourite';
+  buttonsContainer.appendChild(favouriteButton);
+
+  const backButton = document.createElement('button');
+  backButton.className = 'back-button';
+  backButton.innerHTML = 'Back to search results';
+  buttonsContainer.appendChild(backButton);
+
+  gameDetailsContainer.appendChild(buttonsContainer);
+};
