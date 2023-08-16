@@ -22,24 +22,21 @@
       
     </div>
     <div class="middle-section">
-      <div class="middle-top-section">
-        <input class="search-bar" type="text" placeholder="Search game name or tag">
-        <button class="search-button">
-          <img class="search-icon" src="images/search.svg" alt="search-button">
-          <div class="tooltip">Search</div>
-        </button>
-        <button class="favourites-button">
-          Favourites
-        </button>
-      </div>
-      <div class="middle-bottom-section">
-        <div class="error-message"></div>
-      </div>
+      <input class="search-bar" type="text" placeholder="Search game name or tag">
+      <button class="search-button">
+        <img class="search-icon" src="images/search.svg" alt="search-button">
+        <div class="tooltip">Search</div>
+      </button>
+      <button class="favourites-button">
+        Favourites
+      </button>
     </div>
+        
     <div class="right-section">
       <h1>Free Games 2 Play</h1>
     </div>
   </header>
+
   <nav class="sidebar">
     <div class="browse-section">Browse by platforms</div>
     <div class="sidebar-link" id="windows">Windows/PC</div>
@@ -99,7 +96,6 @@
           <option value="">Sort By:</option>
           <option value="relevance">Relevance</option>
           <option value="popular">Popularity</option>
-          <option value="release">Release Date</option>
           <option value="alphabetical">Alphabetical</option>
         </select>
       </div>
@@ -112,6 +108,8 @@
 
   
   <main>
+    <div class="error-message"></div>
+
     <section class="search-results"></section>
 
     <section class="game-details"></section>

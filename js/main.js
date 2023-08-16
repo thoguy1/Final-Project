@@ -398,12 +398,13 @@ const loadSearchResults = (gameTag) => {
     generateSearchResults(res.data);
   })
   .catch( err => {
-    console.log( 'Error loading search results', err );
+    errorMessageNode.innerHTML = 'Game not found!';
   });
 };
 
 // Generate game search results
 const generateSearchResults = (games) => {
+  errorMessageNode.innerHTML = '';
   // Clear previous search results
   searchResultsContainer.replaceChildren();
 
