@@ -7,6 +7,7 @@ const searchGameButton = document.querySelector('.search-button');
 const gameQueryText = document.querySelector('.search-bar');
 const errorMessageNode = document.querySelector('.error-message');
 const showFavouritesButton = document.querySelector('.favourites-button');
+const favouriteCounter = document.querySelector('.favourite-counter');
 
 const searchResultsContainer = document.querySelector('.search-results');
 const resultContainer = document.querySelector('.result');
@@ -37,10 +38,19 @@ const searchLink = document.querySelector('.search-link');
 
 let favouriteGamesIDs = [];
 
+const generateFavouritesCounter = () => {
+  if (favouriteGamesIDs.length > 0) {
+    favouriteCounter.innerHTML = favouriteGamesIDs.length;
+  } else {
+    favouriteCounter.innerHTML = '';
+  }
+}
+
 // Retrieve favourite movies from localStorage
 const savedGamesIDs = JSON.parse(localStorage.getItem('favourite-games'));
 if(Array.isArray(savedGamesIDs)) {
   favouriteGamesIDs = savedGamesIDs;
+  generateFavouritesCounter();
 }
 
 showFavouritesButton.addEventListener('click', () => {
@@ -134,6 +144,7 @@ const generateFavouriteGame = (game) => {
     const index = favouriteGamesIDs.indexOf(game.id);
     if (index !== -1) {
       favouriteGamesIDs.splice(index, 1);
+      generateFavouritesCounter();
       saveGamesToLocalStorage();
       showFavourites();
     }
@@ -544,11 +555,23 @@ const generateGameDetails = (game) => {
 const generateSpecsTable = (game) => {
   const requirements = game.minimum_system_requirements;
 
-  const os = requirements.os ? requirements.os : '';
-  const processor = requirements.processor ? requirements.processor : '';
-  const memory = requirements.memory ? requirements.memory : '';
-  const graphics = requirements.graphics ? requirements.graphics : '';
-  const storage = requirements.storage ? requirements.storage : '';
+  let processor = '';
+  let memory = '';
+  let graphics = '';
+  let storage = '';
+
+  if (requirements.processor !== null && requirements.processor !== undefined) {
+    processor = requirements.processor;
+  }
+  if (requirements.memory !== null && requirements.memory !== undefined) {
+    memory = requirements.memory;
+  }
+  if (requirements.graphics !== null && requirements.graphics !== undefined) {
+    graphics = requirements.graphics;
+  }
+  if (requirements.storage !== null && requirements.storage !== undefined) {
+    storage = requirements.storage;
+  }
 
   const tableSpecs = `
     <table>
@@ -629,21 +652,26 @@ const handleBackButton = (backButton) => {
 
 const handleFavouriteButton = (favouriteButton, id, isFavourite) => {
   
-  favouriteButton.addEventListener('click', () => {
+  favouriteButton.addEventListener('click', (ev) => {
+    ev.preventDefault();
     if (isFavourite) {
       // Remove the game from the favorites list
       const index = favouriteGamesIDs.indexOf(id);
       if (index !== -1) {
         favouriteGamesIDs.splice(index, 1);
+        generateFavouritesCounter();
         saveGamesToLocalStorage();
+        isFavourite = false;
       }
     } else {
       // Add the game to the favorites list
       favouriteGamesIDs.push(id);
+      favouriteCounter.innerHTML = favouriteGamesIDs.length;
       saveGamesToLocalStorage();
+      isFavourite = true;
     }
     // Toggle the button text
-    favouriteButton.innerHTML = isFavourite ? 'Add to Favourite' : 'Remove from Favourite';
+    favouriteButton.innerHTML = isFavourite ? 'Remove from Favourite' : 'Add to Favourite';
   });
 };
 
