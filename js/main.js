@@ -349,7 +349,8 @@ searchLink.addEventListener('click', function(ev){
     generateSearchResults(res.data);
   })
   .catch( err => {
-    console.log( 'Error loading search results', err );
+    searchResultsContainer.replaceChildren();
+    errorMessageNode.innerHTML = 'Game not found!';
   });
 });
 
@@ -398,6 +399,7 @@ const loadSearchResults = (gameTag) => {
     generateSearchResults(res.data);
   })
   .catch( err => {
+    searchResultsContainer.replaceChildren();
     errorMessageNode.innerHTML = 'Game not found!';
   });
 };
