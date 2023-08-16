@@ -315,7 +315,6 @@ const loadSearchResults = (gameTag) => {
     }
   })
   .then( res => {
-    console.log(res.data);
     generateSearchResults(res.data);
   })
   .catch( err => {
@@ -417,9 +416,36 @@ const generateGameDetails = (game) => {
   specsDiv.className = 'specs-table';
   specsDiv.innerHTML = generateSpecsTable(game);
   gameDetailsContainer.appendChild(specsDiv);
+
+  const descHeader = document.createElement('div');
+  descHeader.className = 'description-header';
+  descHeader.innerHTML = 'Description:'
+  gameDetailsContainer.appendChild(descHeader);
+
+  const descDiv = document.createElement('div');
+  descDiv.className = 'description';
+  descDiv.innerHTML = game.description;
+  gameDetailsContainer.appendChild(descDiv);
+
+  const playButtonContainer = document.createElement('div');
+  playButtonContainer.className = 'play-container';
+  const playButton = document.createElement('button');
+  playButton.className = 'play-button';
+  playButton.innerHTML = 'Play now';
+  playButtonContainer.appendChild(playButton);
+  gameDetailsContainer.appendChild(playButtonContainer);
+
 }; // generateGameDetails
 
 const generateSpecsTable = (game) => {
+  const requirements = game.minimum_system_requirements;
+
+  const os = requirements.os ? requirements.os : '';
+  const processor = requirements.processor ? requirements.processor : '';
+  const memory = requirements.memory ? requirements.memory : '';
+  const graphics = requirements.graphics ? requirements.graphics : '';
+  const storage = requirements.storage ? requirements.storage : '';
+
   const tableSpecs = `
     <table>
       <tr>
@@ -441,23 +467,23 @@ const generateSpecsTable = (game) => {
       </tr>
       <tr>
         <th>Operating System:</th>
-        <td colspan="4">${game.minimum_system_requirements.os}</td>
+        <td colspan="4">${os}</td>
       </tr>
       <tr>
         <th>Processor:</th>
-        <td colspan="4">${game.minimum_system_requirements.processor}</td>
+        <td colspan="4">${processor}</td>
       </tr>
       <tr>
         <th>Memory:</th>
-        <td colspan="4">${game.minimum_system_requirements.memory}</td>
+        <td colspan="4">${memory}</td>
       </tr>
       <tr>
         <th>Graphics card:</th>
-        <td colspan="4">${game.minimum_system_requirements.graphhics}</td>
+        <td colspan="4">${graphics}</td>
       </tr>
       <tr>
         <th>Storage:</th>
-        <td colspan="4">${game.minimum_system_requirements.storage}</td>
+        <td colspan="4">${storage}</td>
       </tr>
     </table>
   `;
