@@ -282,8 +282,9 @@ table, th, td {
   .search-link {
     margin-top: 10px;
     height: 35px;
-    color: rgb(245, 81, 81);
+    color: rgb(81, 122, 245);
     font-size: 20px;
+    font-weight: bold;
     display: flex;
     align-items: center;
     padding-left: 40px;
@@ -302,7 +303,7 @@ table, th, td {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 350px));
   grid-gap: 20px;
-  padding: 20px 100px;
+  padding: 30px 130px;
 }
 
 .result {
@@ -310,6 +311,63 @@ table, th, td {
   padding: 10px;
   text-align: center;
   cursor: pointer;
+}
+
+.favourite-result {
+  border: 1px solid #ccc;
+  padding: 10px;
+  text-align: center;
+}
+
+.result img {
+  height: 200px;
+  object-fit: cover;
+}
+
+.favourite-result img {
+  max-width: 100%;
+  height: auto;
+  cursor: pointer;
+}
+
+.favourite-result img:hover {
+  filter: brightness(1.3);
+}
+
+.result:hover {
+  background-color: rgb(140, 60, 140);
+}
+
+.thumbnail-container {
+  position: relative;
+  display: inline-block;
+}
+
+.thumbnail {
+  height: 200px;
+  object-fit: cover;
+}
+
+.remove-button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: red;
+  color: white;
+  border: none;
+  padding: 0 5px;
+  font-size: 25px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.remove-button:active {
+  transform: translateY(2px) scale(0.95);
+}
+
+.remove-button:hover {
+  background-color: blue;
 }
 
 .platform,
@@ -327,16 +385,6 @@ table, th, td {
 .release-date {
   color: lightgoldenrodyellow;
   margin-bottom: 10px;
-}
-
-
-.result img {
-  max-width: 100%;
-  height: auto;
-}
-
-.result:hover {
-  background-color: rgb(140, 60, 140);
 }
 
 .game-details {

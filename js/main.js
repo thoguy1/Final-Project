@@ -38,12 +38,16 @@ const searchLink = document.querySelector('.search-link');
 let favouriteGamesIDs = [];
 
 // Retrieve favourite movies from localStorage
-const savedGamesIDs = JSON.parse(localStorage.getItem('favourites'));
+const savedGamesIDs = JSON.parse(localStorage.getItem('favourite-games'));
 if(Array.isArray(savedGamesIDs)) {
   favouriteGamesIDs = savedGamesIDs;
 }
 
 showFavouritesButton.addEventListener('click', () => {
+  showFavourites();
+});
+
+const showFavourites = () => {
   if(favouriteGamesIDs.length > 0) {
     // Clear previous search results
     searchResultsContainer.replaceChildren();
@@ -65,20 +69,32 @@ showFavouritesButton.addEventListener('click', () => {
     });
     searchResultsContainer.style.display = 'grid';
   } else {
+    searchResultsContainer.replaceChildren();
+    gameDetailsContainer.style.display = 'none';
     errorMessageNode.innerHTML = 'There is no favourite game saved';
   }
-});
+};
 
 // Function to generate and display favorite game results
 const generateFavouriteGame = (game) => {
   const divTag = document.createElement('div');
-  divTag.className = 'result';
+  divTag.className = 'favourite-result';
+  // Create thumbnail container
+  const thumbnailTag = document.createElement('div');
+  thumbnailTag.className = 'thumbnail-container'
   // Create the image element for game thumbnail
   const imgTag = document.createElement('img');
-  imgTag.className = "game-thumbnail";
+  imgTag.className = 'thumbnail';
   imgTag.src = `https://www.freetogame.com/g/${game.id}/thumbnail.jpg`;
   imgTag.alt = game.title;
-  divTag.appendChild(imgTag);
+  thumbnailTag.appendChild(imgTag);
+
+  const removeButton = document.createElement('button');
+  removeButton.className = 'remove-button'
+  removeButton.innerHTML = 'X';
+  removeButton.alt = `remove ${game.title}`;
+  thumbnailTag.appendChild(removeButton);
+  divTag.appendChild(thumbnailTag);
 
   // Create the element to display game title
   const titleTag = document.createElement('h3');
@@ -107,9 +123,20 @@ const generateFavouriteGame = (game) => {
   searchResultsContainer.style.display = 'grid';
         
   //Add a click event listener to show game details when clicked
-  divTag.addEventListener('click', function() {
+  imgTag.addEventListener('click', function() {
     searchResultsContainer.style.display = 'none';
     searchGameDetails(game.id);
+  });
+
+  // Add a click event listener to remove a favourite game
+  removeButton.addEventListener('click', function() {
+    // Remove the game from the favorites list
+    const index = favouriteGamesIDs.indexOf(game.id);
+    if (index !== -1) {
+      favouriteGamesIDs.splice(index, 1);
+      saveGamesToLocalStorage();
+      showFavourites();
+    }
   });
 };
 
@@ -447,10 +474,9 @@ const generateSearchResults = (games) => {
     searchResultsContainer.appendChild(divTag);
     searchResultsContainer.style.display = 'grid';
           
-    //Add a click event listener to show game details when clicked
+    // Add a click event listener to show game details when clicked
     divTag.addEventListener('click', function() {
       searchResultsContainer.style.display = 'none';
-      console.log(game.id);
       searchGameDetails(game.id);
     });
   });
@@ -629,5 +655,5 @@ const handlePlayButton = (playButton, url) => {
 
 // Save favourite games to local storage with 'favourites' as key name
 const saveGamesToLocalStorage = function(){
-  localStorage.setItem('favourites', JSON.stringify(favouriteGamesIDs));
+  localStorage.setItem('favourite-games', JSON.stringify(favouriteGamesIDs));
 };
