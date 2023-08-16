@@ -502,7 +502,7 @@ const generateGameDetails = (game) => {
   descDiv.innerHTML = game.description;
   gameDetailsContainer.appendChild(descDiv);
 
-  generateButtons(game.id);
+  generateButtons(game);
   gameDetailsContainer.style.display = 'block';
 }; // generateGameDetails
 
@@ -556,14 +556,14 @@ const generateSpecsTable = (game) => {
   return tableSpecs;
 }
 
-const generateButtons = (id) => {
+const generateButtons = (game) => {
   const buttonsContainer = document.createElement('div');
   buttonsContainer.className = 'buttons-container';
-  const isFavourite = favouriteGamesIDs.includes(id);
+  const isFavourite = favouriteGamesIDs.includes(game.id);
   
   const playButton = document.createElement('button');
   playButton.className = 'play-button';
-  playButton.innerHTML = 'Play now';
+  playButton.innerHTML = 'Play Game';
   buttonsContainer.appendChild(playButton);
 
   const favouriteButton = document.createElement('button');
@@ -573,14 +573,16 @@ const generateButtons = (id) => {
 
   const backButton = document.createElement('button');
   backButton.className = 'back-button';
-  backButton.innerHTML = 'Back to search results';
+  backButton.innerHTML = 'Back to Search Results';
   buttonsContainer.appendChild(backButton);
 
   gameDetailsContainer.appendChild(buttonsContainer);
 
+  handlePlayButton(playButton, game.game_url);
+
   handleBackButton(backButton);
   
-  handleFavouriteButton(favouriteButton, id, isFavourite);
+  handleFavouriteButton(favouriteButton, game.id, isFavourite);
 };
 
 const handleBackButton = (backButton) => {
@@ -588,7 +590,7 @@ const handleBackButton = (backButton) => {
     gameDetailsContainer.style.display = 'none';
     searchResultsContainer.style.display = 'grid';
   });
-}
+};
 
 const handleFavouriteButton = (favouriteButton, id, isFavourite) => {
   
@@ -607,5 +609,11 @@ const handleFavouriteButton = (favouriteButton, id, isFavourite) => {
     }
     // Toggle the button text
     favouriteButton.innerHTML = isFavourite ? 'Add to Favourite' : 'Remove from Favourite';
+  });
+};
+
+const handlePlayButton = (playButton, url) => {
+  playButton.addEventListener('click', () => {
+    window.open(url, '_blank');
   });
 };
