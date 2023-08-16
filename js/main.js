@@ -37,6 +37,12 @@ const searchLink = document.querySelector('.search-link');
 
 let favouriteGamesIDs = [];
 
+// Retrieve favourite movies from localStorage
+const savedGamesIDs = JSON.parse(localStorage.getItem('favourites'));
+if(Array.isArray(savedGamesIDs)) {
+  favouriteGamesIDs = savedGamesIDs;
+}
+
 showFavouritesButton.addEventListener('click', () => {
   if(favouriteGamesIDs.length > 0) {
     // Clear previous search results
@@ -600,12 +606,12 @@ const handleFavouriteButton = (favouriteButton, id, isFavourite) => {
       const index = favouriteGamesIDs.indexOf(id);
       if (index !== -1) {
         favouriteGamesIDs.splice(index, 1);
-        //savegamesToLocalStorage();
+        saveGamesToLocalStorage();
       }
     } else {
       // Add the game to the favorites list
       favouriteGamesIDs.push(id);
-      //savegamesToLocalStorage();
+      saveGamesToLocalStorage();
     }
     // Toggle the button text
     favouriteButton.innerHTML = isFavourite ? 'Add to Favourite' : 'Remove from Favourite';
@@ -616,4 +622,9 @@ const handlePlayButton = (playButton, url) => {
   playButton.addEventListener('click', () => {
     window.open(url, '_blank');
   });
+};
+
+// Save favourite games to local storage with 'favourites' as key name
+const saveGamesToLocalStorage = function(){
+  localStorage.setItem('favourites', JSON.stringify(favouriteGamesIDs));
 };
