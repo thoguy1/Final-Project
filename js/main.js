@@ -54,11 +54,6 @@ if(Array.isArray(savedGamesIDs)) {
   showFavouritesCounter();
 }
 
-// When user clicks 'Favourites' button
-showFavouritesButton.addEventListener('click', () => {
-  showFavourites();
-});
-
 // Function to show user favourite games
 const showFavourites = () => {
   if(favouriteGamesIDs.length > 0) {
@@ -153,290 +148,6 @@ const generateFavouriteGame = (game) => {
     }
   });
 };
-
-// When user clicks 'Windows (PC)' link on the sidebar
-windowsLink.addEventListener('click', function(ev){
-  axios.get(`${HEROKU_PROXY_URL}${FTG_SEARCH_URL1}`, {
-    params: {
-      platform: 'pc'
-    }
-  })
-  .then(res => {
-    generateSearchResults(res.data);
-  })
-  .catch( err => {
-    console.log( 'Error loading search results', err );
-  });
-});
-
-// When user clicks 'Browser (Web)' link on the sidebar
-browserLink.addEventListener('click', function(ev){
-  axios.get(`${HEROKU_PROXY_URL}${FTG_SEARCH_URL1}`, {
-    params: {
-      platform: 'browser'
-    }
-  })
-  .then(res => {
-    generateSearchResults(res.data);
-  })
-  .catch( err => {
-    console.log( 'Error loading search results', err );
-  });
-});
-
-// When user clicks 'All platforms' link on the sidebar
-allLink.addEventListener('click', function(ev){
-  axios.get(`${HEROKU_PROXY_URL}${FTG_SEARCH_URL1}`, {
-    params: {
-      platform: 'all'
-    }
-  })
-  .then(res => {
-    generateSearchResults(res.data);
-  })
-  .catch( err => {
-    console.log( 'Error loading search results', err );
-  });
-});
-
-// When user clicks 'Anime' genre link on the sidebar
-animeLink.addEventListener('click', function(ev){
-  axios.get(`${HEROKU_PROXY_URL}${FTG_SEARCH_URL1}`, {
-    params: {
-      category: 'anime'
-    }
-  })
-  .then(res => {
-    generateSearchResults(res.data);
-  })
-  .catch( err => {
-    console.log( 'Error loading search results', err );
-  });
-});
-
-// When user clicks 'Battle Royale' genre link on the sidebar
-battleRoyaleLink.addEventListener('click', function(ev){
-  axios.get(`${HEROKU_PROXY_URL}${FTG_SEARCH_URL1}`, {
-    params: {
-      category: 'battle-royale'
-    }
-  })
-  .then(res => {
-    generateSearchResults(res.data);
-  })
-  .catch( err => {
-    console.log( 'Error loading search results', err );
-  });
-});
-
-// When user clicks 'Card Games' link on the sidebar
-cardLink.addEventListener('click', function(ev){
-  axios.get(`${HEROKU_PROXY_URL}${FTG_SEARCH_URL1}`, {
-    params: {
-      category: 'card'
-    }
-  })
-  .then(res => {
-    generateSearchResults(res.data);
-  })
-  .catch( err => {
-    console.log( 'Error loading search results', err );
-  });
-});
-
-// When user clicks 'Fantasy' genre link on the sidebar
-fantasyLink.addEventListener('click', function(ev){
-  axios.get(`${HEROKU_PROXY_URL}${FTG_SEARCH_URL1}`, {
-    params: {
-      category: 'fantasy'
-    }
-  })
-  .then(res => {
-    generateSearchResults(res.data);
-  })
-  .catch( err => {
-    console.log( 'Error loading search results', err );
-  });
-});
-
-// When user clicks 'Fighting' genre link on the sidebar
-fightingLink.addEventListener('click', function(ev){
-  axios.get(`${HEROKU_PROXY_URL}${FTG_SEARCH_URL1}`, {
-    params: {
-      category: 'fighting'
-    }
-  })
-  .then(res => {
-    generateSearchResults(res.data);
-  })
-  .catch( err => {
-    console.log( 'Error loading search results', err );
-  });
-});
-
-// When user clicks 'MMORPG' genre link on the sidebar
-mmorpgLink.addEventListener('click', function(ev){
-  axios.get(`${HEROKU_PROXY_URL}${FTG_SEARCH_URL1}`, {
-    params: {
-      category: 'mmorpg'
-    }
-  })
-  .then(res => {
-    generateSearchResults(res.data);
-  })
-  .catch( err => {
-    console.log( 'Error loading search results', err );
-  });
-});
-
-// When user clicks 'MOBA' genre link on the sidebar
-mobaLink.addEventListener('click', function(ev){
-  axios.get(`${HEROKU_PROXY_URL}${FTG_SEARCH_URL1}`, {
-    params: {
-      category: 'moba'
-    }
-  })
-  .then(res => {
-    generateSearchResults(res.data);
-  })
-  .catch( err => {
-    console.log( 'Error loading search results', err );
-  });
-});
-
-// When user clicks 'Racing' genre link on the sidebar
-racingLink.addEventListener('click', function(ev){
-  axios.get(`${HEROKU_PROXY_URL}${FTG_SEARCH_URL1}`, {
-    params: {
-      category: 'racing'
-    }
-  })
-  .then(res => {
-    generateSearchResults(res.data);
-  })
-  .catch( err => {
-    console.log( 'Error loading search results', err );
-  });
-});
-
-// When user clicks 'Sci-fi' genre link on the sidebar
-scifiLink.addEventListener('click', function(ev){
-  axios.get(`${HEROKU_PROXY_URL}${FTG_SEARCH_URL1}`, {
-    params: {
-      category: 'sci-fi'
-    }
-  })
-  .then(res => {
-    generateSearchResults(res.data);
-  })
-  .catch( err => {
-    console.log( 'Error loading search results', err );
-  });
-});
-
-// When user clicks 'Shooter' genre link on the sidebar
-shooterLink.addEventListener('click', function(ev){
-  axios.get(`${HEROKU_PROXY_URL}${FTG_SEARCH_URL1}`, {
-    params: {
-      category: 'shooter'
-    }
-  })
-  .then(res => {
-    generateSearchResults(res.data);
-  })
-  .catch( err => {
-    console.log( 'Error loading search results', err );
-  });
-});
-
-// When user clicks 'Social' genre link on the sidebar
-socialLink.addEventListener('click', function(ev){
-  axios.get(`${HEROKU_PROXY_URL}${FTG_SEARCH_URL1}`, {
-    params: {
-      category: 'social'
-    }
-  })
-  .then(res => {
-    generateSearchResults(res.data);
-  })
-  .catch( err => {
-    console.log( 'Error loading search results', err );
-  });
-});
-
-// When user clicks 'Sports' genre link on the sidebar
-sportsLink.addEventListener('click', function(ev){
-  axios.get(`${HEROKU_PROXY_URL}${FTG_SEARCH_URL1}`, {
-    params: {
-      category: 'sports'
-    }
-  })
-  .then(res => {
-    generateSearchResults(res.data);
-  })
-  .catch( err => {
-    console.log( 'Error loading search results', err );
-  });
-});
-
-// When user clicks 'Strategy' genre link on the sidebar
-strategyLink.addEventListener('click', function(ev){
-  axios.get(`${HEROKU_PROXY_URL}${FTG_SEARCH_URL1}`, {
-    params: {
-      category: 'strategy'
-    }
-  })
-  .then(res => {
-    generateSearchResults(res.data);
-  })
-  .catch( err => {
-    console.log( 'Error loading search results', err );
-  });
-});
-
-// When user clicks 'Search' link on the bottom of sidebar
-searchLink.addEventListener('click', function(ev){
-  axios.get(`${HEROKU_PROXY_URL}${FTG_SEARCH_URL1}`, {
-    params: {
-      platform: platformSelect.value,
-      category: genreSelect.value,
-      'sort-by': sortBySelect.value
-    }
-  })
-  .then(res => {
-    generateSearchResults(res.data);
-  })
-  .catch( err => {
-    searchResultsContainer.replaceChildren();
-    errorMessageNode.innerHTML = 'Game not found!';
-  });
-});
-
-// When user clicks the search game icon
-searchGameButton.addEventListener('click', function(ev){
-  const newGameQuery = gameQueryText.value;
-  
-  if(newGameQuery.trim().length === 0) {
-    showErrorMessage();
-    return;
-  }
-
-  loadSearchResults(newGameQuery);
-});
-
-// When user presses the 'Enter' key from the text field
-gameQueryText.addEventListener('keydown', function(ev) {
-  if (ev.key === 'Enter') {
-    const newGameQuery = gameQueryText.value;
-    
-    if (newGameQuery.trim().length === 0) {
-      showErrorMessage();
-      return;
-    }
-    
-    loadSearchResults(newGameQuery);
-  }
-});
 
 // Show error message when Tag is not found
 const showErrorMessage = () => {
@@ -585,27 +296,30 @@ const generateGameDetails = (game) => {
 
 // Function to generate game specs table
 const generateSpecsTable = (game) => {
-  const requirements = game.minimum_system_requirements;
-
   let processor = '';
   let memory = '';
   let graphics = '';
   let storage = '';
 
-  if (requirements.processor !== null && requirements.processor !== undefined) {
-    processor = requirements.processor;
+  if(game.minimum_system_requirements) {
+    const requirements = game.minimum_system_requirements;
+
+    if (requirements.processor !== null && requirements.processor !== undefined) {
+      processor = requirements.processor;
+    }
+    if (requirements.memory !== null && requirements.memory !== undefined) {
+      memory = requirements.memory;
+    }
+    if (requirements.graphics !== null && requirements.graphics !== undefined) {
+      graphics = requirements.graphics;
+    }
+    if (requirements.storage !== null && requirements.storage !== undefined) {
+      storage = requirements.storage;
+    }
   }
-  if (requirements.memory !== null && requirements.memory !== undefined) {
-    memory = requirements.memory;
-  }
-  if (requirements.graphics !== null && requirements.graphics !== undefined) {
-    graphics = requirements.graphics;
-  }
-  if (requirements.storage !== null && requirements.storage !== undefined) {
-    storage = requirements.storage;
-  }
+  
   // Create table for game specs and store in a variable
-  const tableSpecs = `
+  const specsTable = `
     <table>
       <tr>
         <th>Genre</th>
@@ -643,7 +357,7 @@ const generateSpecsTable = (game) => {
     </table>
   `;
 
-  return tableSpecs;
+  return specsTable;
 }
 
 // Function to generate 'Play game', 'Add/Remove Favourite', and 'Back to Search Results' buttons
@@ -721,3 +435,162 @@ const handlePlayButton = (playButton, url) => {
 const saveGamesToLocalStorage = function(){
   localStorage.setItem('favourite-games', JSON.stringify(favouriteGamesIDs));
 };
+
+// Function to search by platform
+const searchByPlatform = (p) => {
+  axios.get(`${HEROKU_PROXY_URL}${FTG_SEARCH_URL1}`, {
+    params: {
+      platform: p
+    }
+  })
+  .then(res => {
+    generateSearchResults(res.data);
+  })
+  .catch( err => {
+    console.log( 'Error loading search results', err );
+  });
+};
+
+// Function to search by genre
+const searchByGenre = (genre) => {
+  axios.get(`${HEROKU_PROXY_URL}${FTG_SEARCH_URL1}`, {
+    params: {
+      category: genre
+    }
+  })
+  .then(res => {
+    generateSearchResults(res.data);
+  })
+  .catch( err => {
+    console.log( 'Error loading search results', err );
+  });
+};
+
+// When user clicks 'Windows (PC)' link on the sidebar
+windowsLink.addEventListener('click', function(ev){
+  searchByPlatform('pc');
+});
+
+// When user clicks 'Browser (Web)' link on the sidebar
+browserLink.addEventListener('click', function(ev){
+  searchByPlatform('browser');
+});
+
+// When user clicks 'All platforms' link on the sidebar
+allLink.addEventListener('click', function(ev){
+  searchByPlatform('all');
+});
+
+// When user clicks 'Anime' genre link on the sidebar
+animeLink.addEventListener('click', function(ev){
+  searchByGenre('anime');
+});
+
+// When user clicks 'Battle Royale' genre link on the sidebar
+battleRoyaleLink.addEventListener('click', function(ev){
+  searchByGenre('battle-royale');
+});
+
+// When user clicks 'Card Games' link on the sidebar
+cardLink.addEventListener('click', function(ev){
+  searchByGenre('card');
+});
+
+// When user clicks 'Fantasy' genre link on the sidebar
+fantasyLink.addEventListener('click', function(ev){
+  searchByGenre('fantasy');
+});
+
+// When user clicks 'Fighting' genre link on the sidebar
+fightingLink.addEventListener('click', function(ev){
+  searchByGenre('fighting');
+});
+
+// When user clicks 'MMORPG' genre link on the sidebar
+mmorpgLink.addEventListener('click', function(ev){
+  searchByGenre('mmorpg');
+});
+
+// When user clicks 'MOBA' genre link on the sidebar
+mobaLink.addEventListener('click', function(ev){
+  searchByGenre('moba');
+});
+
+// When user clicks 'Racing' genre link on the sidebar
+racingLink.addEventListener('click', function(ev){
+  searchByGenre('racing');
+});
+
+// When user clicks 'Sci-fi' genre link on the sidebar
+scifiLink.addEventListener('click', function(ev){
+  searchByGenre('sci-fi');
+});
+
+// When user clicks 'Shooter' genre link on the sidebar
+shooterLink.addEventListener('click', function(ev){
+  searchByGenre('shooter');
+});
+
+// When user clicks 'Social' genre link on the sidebar
+socialLink.addEventListener('click', function(ev){
+  searchByGenre('social');
+});
+
+// When user clicks 'Sports' genre link on the sidebar
+sportsLink.addEventListener('click', function(ev){
+  searchByGenre('sports');
+});
+
+// When user clicks 'Strategy' genre link on the sidebar
+strategyLink.addEventListener('click', function(ev){
+  searchByGenre('strategy');
+});
+
+// When user clicks 'Search' link on the bottom of sidebar
+searchLink.addEventListener('click', function(ev){
+  axios.get(`${HEROKU_PROXY_URL}${FTG_SEARCH_URL1}`, {
+    params: {
+      platform: platformSelect.value,
+      category: genreSelect.value,
+      'sort-by': sortBySelect.value
+    }
+  })
+  .then(res => {
+    generateSearchResults(res.data);
+  })
+  .catch( err => {
+    searchResultsContainer.replaceChildren();
+    errorMessageNode.innerHTML = 'Game not found!';
+  });
+});
+
+// When user clicks the search game icon
+searchGameButton.addEventListener('click', function(ev){
+  const newGameQuery = gameQueryText.value;
+  
+  if(newGameQuery.trim().length === 0) {
+    showErrorMessage();
+    return;
+  }
+
+  loadSearchResults(newGameQuery);
+});
+
+// When user presses the 'Enter' key from the text field
+gameQueryText.addEventListener('keydown', function(ev) {
+  if (ev.key === 'Enter') {
+    const newGameQuery = gameQueryText.value;
+    
+    if (newGameQuery.trim().length === 0) {
+      showErrorMessage();
+      return;
+    }
+    
+    loadSearchResults(newGameQuery);
+  }
+});
+
+// When user clicks 'Favourites' button
+showFavouritesButton.addEventListener('click', () => {
+  showFavourites();
+});
