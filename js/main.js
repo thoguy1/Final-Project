@@ -1,6 +1,8 @@
 
 const FTG_SEARCH_URL1 = 'https://www.freetogame.com/api/games';
 const FTG_SEARCH_URL2 = 'https://www.freetogame.com/api/filter';
+// This API enables cross-origin requests to anywhere. 
+// If error, go to https://cors-anywhere.herokuapp.com/corsdemo to request temporary accesss to the demo server
 const HEROKU_PROXY_URL = 'https://cors-anywhere.herokuapp.com/';
 
 const searchGameButton = document.querySelector('.search-button');
