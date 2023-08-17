@@ -81,11 +81,19 @@ table, th, td {
 }
 
 .error-message {
-  text-align: center;
+  padding-left: 20%;
   color: red;
   font-size: 2rem;
   margin-top: 100px;
+}
 
+
+.error-message .tag-list {
+  display: flex;
+  flex-direction: column;
+  color: lightgray;
+  font-size: 0.9rem;
+  width: 700px;
 }
 
 .game-controller-logo {
@@ -108,7 +116,8 @@ table, th, td {
 }
 
 .search-bar::placeholder {
-  font-size: 16px;
+  font-size: 14px;
+  color: rgb(168, 166, 166);
 }
 
 .search-button {

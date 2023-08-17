@@ -38,7 +38,8 @@ const searchLink = document.querySelector('.search-link');
 
 let favouriteGamesIDs = [];
 
-const generateFavouritesCounter = () => {
+// Function to show favourite counter
+const showFavouritesCounter = () => {
   if (favouriteGamesIDs.length > 0) {
     favouriteCounter.innerHTML = favouriteGamesIDs.length;
   } else {
@@ -50,13 +51,15 @@ const generateFavouritesCounter = () => {
 const savedGamesIDs = JSON.parse(localStorage.getItem('favourite-games'));
 if(Array.isArray(savedGamesIDs)) {
   favouriteGamesIDs = savedGamesIDs;
-  generateFavouritesCounter();
+  showFavouritesCounter();
 }
 
+// When user clicks 'Favourites' button
 showFavouritesButton.addEventListener('click', () => {
   showFavourites();
 });
 
+// Function to show user favourite games
 const showFavourites = () => {
   if(favouriteGamesIDs.length > 0) {
     // Clear previous search results
@@ -144,13 +147,14 @@ const generateFavouriteGame = (game) => {
     const index = favouriteGamesIDs.indexOf(game.id);
     if (index !== -1) {
       favouriteGamesIDs.splice(index, 1);
-      generateFavouritesCounter();
+      showFavouritesCounter();
       saveGamesToLocalStorage();
       showFavourites();
     }
   });
 };
 
+// When user clicks 'Windows (PC)' link on the sidebar
 windowsLink.addEventListener('click', function(ev){
   axios.get(`${HEROKU_PROXY_URL}${FTG_SEARCH_URL1}`, {
     params: {
@@ -165,6 +169,7 @@ windowsLink.addEventListener('click', function(ev){
   });
 });
 
+// When user clicks 'Browser (Web)' link on the sidebar
 browserLink.addEventListener('click', function(ev){
   axios.get(`${HEROKU_PROXY_URL}${FTG_SEARCH_URL1}`, {
     params: {
@@ -179,6 +184,7 @@ browserLink.addEventListener('click', function(ev){
   });
 });
 
+// When user clicks 'All platforms' link on the sidebar
 allLink.addEventListener('click', function(ev){
   axios.get(`${HEROKU_PROXY_URL}${FTG_SEARCH_URL1}`, {
     params: {
@@ -193,6 +199,7 @@ allLink.addEventListener('click', function(ev){
   });
 });
 
+// When user clicks 'Anime' genre link on the sidebar
 animeLink.addEventListener('click', function(ev){
   axios.get(`${HEROKU_PROXY_URL}${FTG_SEARCH_URL1}`, {
     params: {
@@ -207,6 +214,7 @@ animeLink.addEventListener('click', function(ev){
   });
 });
 
+// When user clicks 'Battle Royale' genre link on the sidebar
 battleRoyaleLink.addEventListener('click', function(ev){
   axios.get(`${HEROKU_PROXY_URL}${FTG_SEARCH_URL1}`, {
     params: {
@@ -221,6 +229,7 @@ battleRoyaleLink.addEventListener('click', function(ev){
   });
 });
 
+// When user clicks 'Card Games' link on the sidebar
 cardLink.addEventListener('click', function(ev){
   axios.get(`${HEROKU_PROXY_URL}${FTG_SEARCH_URL1}`, {
     params: {
@@ -235,6 +244,7 @@ cardLink.addEventListener('click', function(ev){
   });
 });
 
+// When user clicks 'Fantasy' genre link on the sidebar
 fantasyLink.addEventListener('click', function(ev){
   axios.get(`${HEROKU_PROXY_URL}${FTG_SEARCH_URL1}`, {
     params: {
@@ -249,6 +259,7 @@ fantasyLink.addEventListener('click', function(ev){
   });
 });
 
+// When user clicks 'Fighting' genre link on the sidebar
 fightingLink.addEventListener('click', function(ev){
   axios.get(`${HEROKU_PROXY_URL}${FTG_SEARCH_URL1}`, {
     params: {
@@ -263,6 +274,7 @@ fightingLink.addEventListener('click', function(ev){
   });
 });
 
+// When user clicks 'MMORPG' genre link on the sidebar
 mmorpgLink.addEventListener('click', function(ev){
   axios.get(`${HEROKU_PROXY_URL}${FTG_SEARCH_URL1}`, {
     params: {
@@ -277,6 +289,7 @@ mmorpgLink.addEventListener('click', function(ev){
   });
 });
 
+// When user clicks 'MOBA' genre link on the sidebar
 mobaLink.addEventListener('click', function(ev){
   axios.get(`${HEROKU_PROXY_URL}${FTG_SEARCH_URL1}`, {
     params: {
@@ -291,6 +304,7 @@ mobaLink.addEventListener('click', function(ev){
   });
 });
 
+// When user clicks 'Racing' genre link on the sidebar
 racingLink.addEventListener('click', function(ev){
   axios.get(`${HEROKU_PROXY_URL}${FTG_SEARCH_URL1}`, {
     params: {
@@ -305,6 +319,7 @@ racingLink.addEventListener('click', function(ev){
   });
 });
 
+// When user clicks 'Sci-fi' genre link on the sidebar
 scifiLink.addEventListener('click', function(ev){
   axios.get(`${HEROKU_PROXY_URL}${FTG_SEARCH_URL1}`, {
     params: {
@@ -319,6 +334,7 @@ scifiLink.addEventListener('click', function(ev){
   });
 });
 
+// When user clicks 'Shooter' genre link on the sidebar
 shooterLink.addEventListener('click', function(ev){
   axios.get(`${HEROKU_PROXY_URL}${FTG_SEARCH_URL1}`, {
     params: {
@@ -333,6 +349,7 @@ shooterLink.addEventListener('click', function(ev){
   });
 });
 
+// When user clicks 'Social' genre link on the sidebar
 socialLink.addEventListener('click', function(ev){
   axios.get(`${HEROKU_PROXY_URL}${FTG_SEARCH_URL1}`, {
     params: {
@@ -347,6 +364,7 @@ socialLink.addEventListener('click', function(ev){
   });
 });
 
+// When user clicks 'Sports' genre link on the sidebar
 sportsLink.addEventListener('click', function(ev){
   axios.get(`${HEROKU_PROXY_URL}${FTG_SEARCH_URL1}`, {
     params: {
@@ -361,6 +379,7 @@ sportsLink.addEventListener('click', function(ev){
   });
 });
 
+// When user clicks 'Strategy' genre link on the sidebar
 strategyLink.addEventListener('click', function(ev){
   axios.get(`${HEROKU_PROXY_URL}${FTG_SEARCH_URL1}`, {
     params: {
@@ -375,6 +394,7 @@ strategyLink.addEventListener('click', function(ev){
   });
 });
 
+// When user clicks 'Search' link on the bottom of sidebar
 searchLink.addEventListener('click', function(ev){
   axios.get(`${HEROKU_PROXY_URL}${FTG_SEARCH_URL1}`, {
     params: {
@@ -392,31 +412,40 @@ searchLink.addEventListener('click', function(ev){
   });
 });
 
-
-
+// When user clicks the search game icon
 searchGameButton.addEventListener('click', function(ev){
   const newGameQuery = gameQueryText.value;
   
   if(newGameQuery.trim().length === 0) {
-    errorMessageNode.innerHTML = 'Please enter a game name, tag, or keyword.'
+    showErrorMessage();
     return;
   }
 
   loadSearchResults(newGameQuery);
 });
 
+// When user presses the 'Enter' key from the text field
 gameQueryText.addEventListener('keydown', function(ev) {
   if (ev.key === 'Enter') {
     const newGameQuery = gameQueryText.value;
     
     if (newGameQuery.trim().length === 0) {
-      errorMessageNode.innerHTML = 'Please enter a game name, tag, or keyword.';
+      showErrorMessage();
       return;
     }
     
     loadSearchResults(newGameQuery);
   }
 });
+
+// Show error message when Tag is not found
+const showErrorMessage = () => {
+  errorMessageNode.innerHTML = `<p>Please enter a game tag.</p>
+  <div class="tag-list">
+  <div><strong>Tag List:</strong></div>
+  <div>mmorpg, shooter, strategy, moba, racing, sports, social, sandbox, open-world, survival, pvp, pve, pixel, voxel, zombie, turn-based, first-person, third-Person, top-down, tank, space, sailing, side-scroller, superhero, permadeath, card, battle-royale, mmo, mmofps, mmotps, 3d, 2d, anime, fantasy, sci-fi, fighting, action-rpg, action, military, martial-arts, flight, low-spec, tower-defense, horror, mmorts </div>
+  </div>`;
+};
 
 // When user start typing on the input field, the previous error message disappear
 gameQueryText.addEventListener('input', function(ev){
@@ -425,7 +454,7 @@ gameQueryText.addEventListener('input', function(ev){
   }
 });
 
-// Load the search results from the input text entered by user
+// Function to load search results from the input text entered by user
 const loadSearchResults = (gameTag) => {
   // Make an AJAX request to get a list games from the user input text
   axios.get(`${HEROKU_PROXY_URL}${FTG_SEARCH_URL2}`, {
@@ -438,11 +467,11 @@ const loadSearchResults = (gameTag) => {
   })
   .catch( err => {
     searchResultsContainer.replaceChildren();
-    errorMessageNode.innerHTML = 'Game not found!';
+    showErrorMessage();
   });
 };
 
-// Generate game search results
+// Function to generate game search results
 const generateSearchResults = (games) => {
   errorMessageNode.innerHTML = '';
   // Clear previous search results
@@ -491,8 +520,9 @@ const generateSearchResults = (games) => {
       searchGameDetails(game.id);
     });
   });
-}; // generateSearchResults()
+};
 
+// Function to search for game details
 const searchGameDetails = (gameId) => {
 
   axios.get(`${HEROKU_PROXY_URL}https://www.freetogame.com/api/game`, {
@@ -506,8 +536,9 @@ const searchGameDetails = (gameId) => {
   .catch( err => {
     console.log( 'Error loading game details', err );
   });
-}; // searchGameDetails()
+};
 
+// Function to show game details
 const generateGameDetails = (game) => {
   gameDetailsContainer.replaceChildren();
 
@@ -550,8 +581,9 @@ const generateGameDetails = (game) => {
 
   generateButtons(game);
   gameDetailsContainer.style.display = 'block';
-}; // generateGameDetails
+};
 
+// Function to generate game specs table
 const generateSpecsTable = (game) => {
   const requirements = game.minimum_system_requirements;
 
@@ -572,7 +604,7 @@ const generateSpecsTable = (game) => {
   if (requirements.storage !== null && requirements.storage !== undefined) {
     storage = requirements.storage;
   }
-
+  // Create table for game specs and store in a variable
   const tableSpecs = `
     <table>
       <tr>
@@ -614,6 +646,7 @@ const generateSpecsTable = (game) => {
   return tableSpecs;
 }
 
+// Function to generate 'Play game', 'Add/Remove Favourite', and 'Back to Search Results' buttons
 const generateButtons = (game) => {
   const buttonsContainer = document.createElement('div');
   buttonsContainer.className = 'buttons-container';
@@ -643,6 +676,7 @@ const generateButtons = (game) => {
   handleFavouriteButton(favouriteButton, game.id, isFavourite);
 };
 
+// Function to return to search results
 const handleBackButton = (backButton) => {
   backButton.addEventListener('click', () => {
     gameDetailsContainer.style.display = 'none';
@@ -650,6 +684,7 @@ const handleBackButton = (backButton) => {
   });
 };
 
+// Function to handle favourite button click
 const handleFavouriteButton = (favouriteButton, id, isFavourite) => {
   
   favouriteButton.addEventListener('click', (ev) => {
@@ -659,7 +694,7 @@ const handleFavouriteButton = (favouriteButton, id, isFavourite) => {
       const index = favouriteGamesIDs.indexOf(id);
       if (index !== -1) {
         favouriteGamesIDs.splice(index, 1);
-        generateFavouritesCounter();
+        showFavouritesCounter();
         saveGamesToLocalStorage();
         isFavourite = false;
       }
@@ -675,13 +710,14 @@ const handleFavouriteButton = (favouriteButton, id, isFavourite) => {
   });
 };
 
+// Function to open the official game URL in a new tab
 const handlePlayButton = (playButton, url) => {
   playButton.addEventListener('click', () => {
     window.open(url, '_blank');
   });
 };
 
-// Save favourite games to local storage with 'favourites' as key name
+// Function to save favourite games to local storage with 'favourites' as key name
 const saveGamesToLocalStorage = function(){
   localStorage.setItem('favourite-games', JSON.stringify(favouriteGamesIDs));
 };
