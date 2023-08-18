@@ -213,11 +213,11 @@ table, th, td {
   }
   
   .sidebar-link {
-    height: 35px;
+    height: 25px;
     display: flex;
     align-items: center;
     cursor: pointer;
-    padding-left: 40px;
+    padding-left: 20px;
   }
   
   .sidebar-link:hover {
@@ -230,29 +230,29 @@ table, th, td {
 
   .browse-section {
     display: flex;
-    height: 40px;
+    height: 30px;
     align-items: center;
-    padding-left: 14px;
+    padding-left: 10px;
     background-color: rgb(40, 40, 40);
     color: rgb(100, 100, 100);
-    font-weight: 600;
+    font-weight: 500;
   }
 
    .detailed-selection {
     height: 35px;
     display: flex;
     align-items: center;
-    padding-left: 25px;
+    padding-left: 20px;
   }
 
   .search-link {
     margin-top: 10px;
-    height: 35px;
+    height: 25px;
     color: rgb(245, 81, 81);
     font-size: 20px;
     display: flex;
     align-items: center;
-    padding-left: 25px;
+    padding-left: 20px;
     cursor: pointer;
   }
 
@@ -276,11 +276,11 @@ table, th, td {
   }
   
   .sidebar-link {
-    height: 35px;
+    height: 30px;
     display: flex;
     align-items: center;
     cursor: pointer;
-    padding-left: 40px;
+    padding-left: 30px;
   }
   
   .sidebar-link:hover {
@@ -293,7 +293,7 @@ table, th, td {
 
   .browse-section {
     display: flex;
-    height: 40px;
+    height: 35px;
     align-items: center;
     padding-left: 20px;
     background-color: rgb(40, 40, 40);
@@ -302,21 +302,21 @@ table, th, td {
   }
 
   .detailed-selection {
-    height: 35px;
+    height: 30px;
     display: flex;
     align-items: center;
-    padding-left: 40px;
+    padding-left: 30px;
   }
 
   .search-link {
     margin-top: 10px;
-    height: 35px;
+    height: 30px;
     color: rgb(81, 122, 245);
     font-size: 20px;
     font-weight: bold;
     display: flex;
     align-items: center;
-    padding-left: 40px;
+    padding-left: 30px;
     cursor: pointer;
   }
 
