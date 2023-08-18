@@ -206,14 +206,14 @@ table, th, td {
     bottom: 0;
     z-index: 50;
     background-color: rgb(30, 30, 30);
-    width: 220px;
+    font-size: 0.8rem;
+    width: 170px;
     z-index: 50;
     padding-top: 0;
-    padding-bottom: 20px;
   }
   
   .sidebar-link {
-    height: 25px;
+    height: 20px;
     display: flex;
     align-items: center;
     cursor: pointer;
@@ -230,7 +230,7 @@ table, th, td {
 
   .browse-section {
     display: flex;
-    height: 30px;
+    height: 20px;
     align-items: center;
     padding-left: 10px;
     background-color: rgb(40, 40, 40);
@@ -239,7 +239,7 @@ table, th, td {
   }
 
    .detailed-selection {
-    height: 35px;
+    height: 20px;
     display: flex;
     align-items: center;
     padding-left: 20px;
@@ -247,7 +247,7 @@ table, th, td {
 
   .search-link {
     margin-top: 10px;
-    height: 25px;
+    height: 20px;
     color: rgb(245, 81, 81);
     font-size: 20px;
     display: flex;
@@ -269,14 +269,14 @@ table, th, td {
     bottom: 0;
     z-index: 50;
     background-color: rgb(30, 30, 30);
-    width: 220px;
+    font-size: 0.9rem;
+    width: 200px;
     z-index: 2;
     padding-top: 0;
-    padding-bottom: 30px;
   }
   
   .sidebar-link {
-    height: 30px;
+    height: 25px;
     display: flex;
     align-items: center;
     cursor: pointer;
@@ -293,7 +293,7 @@ table, th, td {
 
   .browse-section {
     display: flex;
-    height: 35px;
+    height: 25px;
     align-items: center;
     padding-left: 20px;
     background-color: rgb(40, 40, 40);
@@ -302,7 +302,7 @@ table, th, td {
   }
 
   .detailed-selection {
-    height: 30px;
+    height: 25px;
     display: flex;
     align-items: center;
     padding-left: 30px;
@@ -310,7 +310,7 @@ table, th, td {
 
   .search-link {
     margin-top: 10px;
-    height: 30px;
+    height: 25px;
     color: rgb(81, 122, 245);
     font-size: 20px;
     font-weight: bold;
