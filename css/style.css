@@ -213,7 +213,7 @@ table, th, td {
   }
   
   .sidebar-link {
-    height: 20px;
+    height: 25px;
     display: flex;
     align-items: center;
     cursor: pointer;
@@ -230,7 +230,7 @@ table, th, td {
 
   .browse-section {
     display: flex;
-    height: 20px;
+    height: 25px;
     align-items: center;
     padding-left: 10px;
     background-color: rgb(40, 40, 40);
@@ -239,7 +239,7 @@ table, th, td {
   }
 
    .detailed-selection {
-    height: 20px;
+    height: 25px;
     display: flex;
     align-items: center;
     padding-left: 20px;
@@ -247,9 +247,9 @@ table, th, td {
 
   .search-link {
     margin-top: 10px;
-    height: 20px;
+    height: 25px;
     color: rgb(245, 81, 81);
-    font-size: 20px;
+    font-size: 1.1rem;
     display: flex;
     align-items: center;
     padding-left: 20px;
@@ -311,19 +311,26 @@ table, th, td {
   .search-link {
     margin-top: 10px;
     height: 25px;
-    color: rgb(81, 122, 245);
-    font-size: 20px;
-    font-weight: bold;
+    color: rgb(245, 81, 81);
+    font-size: 1.2rem;
     display: flex;
     align-items: center;
     padding-left: 30px;
     cursor: pointer;
   }
 
-    .search-link:hover {
+  .search-link:hover {
     background-color: rgb(63, 60, 60);
+
   }
 
+}
+
+.note {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  font-size: 13px;
 }
 
 .search-results {
