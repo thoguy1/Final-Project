@@ -2,6 +2,7 @@ body{
   font-family: Arial;
   background-color: rgb(46, 46, 46);
   color: rgb(198, 196, 196);
+  font-size: 0.9rem;
 }
 
 h1{
@@ -327,10 +328,8 @@ table, th, td {
 }
 
 .note {
-  position: fixed;
-  right: 0;
-  bottom: 0;
-  font-size: 13px;
+  font-size: 0.9rem;
+
 }
 
 .search-results {
