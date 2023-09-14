@@ -1,6 +1,8 @@
-
 const FTG_SEARCH_URL1 = 'https://www.freetogame.com/api/games';
 const FTG_SEARCH_URL2 = 'https://www.freetogame.com/api/filter';
+// This API enables cross-origin requests to anywhere. 
+// If error, go to https://cors-anywhere.herokuapp.com/corsdemo to request temporary access to the demo server
+const HEROKU_PROXY_URL = 'https://cors-anywhere.herokuapp.com/';
 
 const searchGameButton = document.querySelector('.search-button');
 const gameQueryText = document.querySelector('.search-bar');
@@ -61,7 +63,7 @@ const showFavourites = () => {
     // Make sure gameDetailsContainer and castDetailsContainer are hidden
     gameDetailsContainer.style.display = 'none';
     favouriteGamesIDs.forEach(gameId => {
-      axios.get('https://www.freetogame.com/api/game', {
+      axios.get(`${HEROKU_PROXY_URL}https://www.freetogame.com/api/game`, {
         params: {
           id: gameId
         }
@@ -167,7 +169,7 @@ gameQueryText.addEventListener('input', function(ev){
 // Function to load search results from the input text entered by user
 const loadSearchResults = (gameTag) => {
   // Make an AJAX request to get a list games from the user input text
-  axios.get(`${FTG_SEARCH_URL2}`, {
+  axios.get(`${HEROKU_PROXY_URL}${FTG_SEARCH_URL2}`, {
     params: {
       tag: gameTag
     }
@@ -235,7 +237,7 @@ const generateSearchResults = (games) => {
 // Function to search for game details
 const searchGameDetails = (gameId) => {
 
-  axios.get('https://www.freetogame.com/api/game', {
+  axios.get(`${HEROKU_PROXY_URL}https://www.freetogame.com/api/game`, {
     params: {
       id: gameId
     }
@@ -437,7 +439,7 @@ const saveGamesToLocalStorage = function(){
 
 // Function to search by platform
 const searchByPlatform = (p) => {
-  axios.get(`${FTG_SEARCH_URL1}`, {
+  axios.get(`${HEROKU_PROXY_URL}${FTG_SEARCH_URL1}`, {
     params: {
       platform: p
     }
@@ -452,7 +454,7 @@ const searchByPlatform = (p) => {
 
 // Function to search by genre
 const searchByGenre = (genre) => {
-  axios.get(`${FTG_SEARCH_URL1}`, {
+  axios.get(`${HEROKU_PROXY_URL}${FTG_SEARCH_URL1}`, {
     params: {
       category: genre
     }
@@ -547,7 +549,7 @@ strategyLink.addEventListener('click', function(ev){
 
 // When user clicks 'Search' link on the bottom of sidebar
 searchLink.addEventListener('click', function(ev){
-  axios.get(`${FTG_SEARCH_URL1}`, {
+  axios.get(`${HEROKU_PROXY_URL}${FTG_SEARCH_URL1}`, {
     params: {
       platform: platformSelect.value,
       category: genreSelect.value,
