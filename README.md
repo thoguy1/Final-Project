@@ -9,4 +9,4 @@ The Free Games 2 Play web app is designed to showcase the skills acquired during
 - Game Search: Users can search for games using tags, platforms, genres, and other filters.
 - Game Details: Detailed information about each game, including name, description, genre, platform, and more.
 - Favorite Games: Users can add and remove games from their list of favorites.
-- LocalStorage: Favorite games are stored in the browser's localStorage for easy access across sessions.
+- LocalStorage: Favorite games are stored in the browser's localStorage for easy access across sessions.# free-games-2play
