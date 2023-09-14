@@ -327,6 +327,10 @@ table, th, td {
 
 }
 
+.note {
+  font-size: 0.9rem;
+}
+
 .search-results {
   margin-top: 90px;
   margin-left: 120px;
